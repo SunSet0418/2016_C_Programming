@@ -62,15 +62,11 @@ void reset() {
 	tail = (node*)malloc(sizeof(node));
 	head->newpro = tail;
 	tail->newpro = NULL;
-	printf("연결 리스트가 초기화 되었습니다\n");
 }
 
-void insert() {
+void insertnode() {
 	system("cls");
-	head = (node*)malloc(sizeof(node));
-	tail = (node*)malloc(sizeof(node));
-	head->newpro = tail;
-	tail->newpro = NULL;
+	reset();
 	while (1) {
 		int barcode;
 		node *Newnode = (node*)malloc(sizeof(node));
@@ -100,23 +96,21 @@ void insert() {
 	return;
 }
 
-void deleteNode() {
+void deletenode() {
 	int barcode;
 	scanf("%d", &barcode);
-	node *a = head->newpro;
-	while (a != tail) {
-		node *o = a;
-		a = a->newpro;
-		if (a->barcode == barcode) {
-			node*s = a->newpro;
-			free(a);
+	node *p = head->newpro;
+	while (p != tail) {
+		node *o = p;
+		p = p->newpro;
+		if (p->barcode == barcode) {
+			node*s = p->newpro;
+			free(p);
 			o->newpro = s;
 			break;
 		}
 	}
-	return;
 }
-
 void main() {
 	while (1) {
 		system("cls");
@@ -127,8 +121,8 @@ void main() {
 		printf("3. 계산목록\n");
 		scanf("%d", &select);
 		switch (select) {
-		case 1:insert(); break;
-		case 2:deleteNode(); break;
+		case 1:insertnode(); break;
+		case 2:deletenode(); break;
 		case 3:printLinkedList(); break;
 		}
 	}
