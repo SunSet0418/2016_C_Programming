@@ -81,7 +81,6 @@ void printLinkedList() {
 }
 
 
-
 void insertnode() {
 	system("cls");
 	while (1) {
