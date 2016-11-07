@@ -21,12 +21,19 @@ struct product list[10] = {
 	{"맥북프로",1400000,8858741718423},
 	{"맥북프로 2016",2500000,6945795380026},
 	{"열혈강의 자료구조",32000,9788989345022},
-	{"초코파이",8000,8801117544614}
+	{"초코파이",8000,8801117544614},
 };
 
 node*head, *tail;
 
 void main();
+
+void reset() {
+	head = (node*)malloc(sizeof(node));
+	tail = (node*)malloc(sizeof(node));
+	head->newpro = tail;
+	tail->newpro = NULL;
+}
 
 void insertprint() {
 	system("cls");
@@ -64,21 +71,16 @@ void printLinkedList() {
 	printf("받은 금액 : ");
 	scanf("%d", &input);
 	if (sum > input) {
-		printf("남은 금액 : %d\n", sum - input);
+		printf("남은 금액 : %d원\n", sum - input);
 	}
 	else if (sum < input) {
-		printf("거스름돈 : %d\n", input - sum);
+		printf("거스름돈 : %d원\n", input - sum);
 	}
 	reset();
 	system("pause");
 }
 
-void reset() {
-	head = (node*)malloc(sizeof(node));
-	tail = (node*)malloc(sizeof(node));
-	head->newpro = tail;
-	tail->newpro = NULL;
-}
+
 
 void insertnode() {
 	system("cls");
@@ -94,7 +96,7 @@ void insertnode() {
 				break;
 			}
 		}
-		for (int i = 0; i < (sizeof(list) / sizeof(LinkedList)); i++) {
+		for (int i = 0; i < (sizeof(list) / sizeof(product)); i++) {
 			if (list[i].barcode == barcode && list[i].barcode != p->barcode) {
 				strcpy(Newnode->name, list[i].name);
 				Newnode->price = list[i].price;
