@@ -66,36 +66,33 @@ void reset() {
 
 void insertnode() {
 	system("cls");
-	reset();
 	while (1) {
 		int barcode;
 		node *Newnode = (node*)malloc(sizeof(node));
-		node*p = head;
-		node*s = p->newpro;
+		node *p = head;
 		scanf("%d", &barcode);
 		while (p->newpro != tail) {
 			p = p->newpro;
+			if (p->barcode == barcode) {
+				p->num++;
+				break;
+			}
 		}
-		if (barcode == 0)
-			printLinkedList();
-		else if (barcode == 1)
-			main();
-		for (int i = 0; i < (sizeof(list) / sizeof(product)); i++) {
-			if (list[i].barcode == barcode) {
+		for (int i = 0; i < (sizeof(list) / sizeof(LinkedList)); i++) {
+			if (list[i].barcode == barcode && list[i].barcode != p->barcode) {
 				strcpy(Newnode->name, list[i].name);
 				Newnode->price = list[i].price;
 				Newnode->barcode = list[i].barcode;
-				Newnode->num = 1;
 				Newnode->newpro = tail;
+				Newnode->num = 1;
 				p->newpro = Newnode;
-				insertprint();
-				fflush(stdin);
-			}
-		}
-	}
-	return;
-}
 
+			}
+			else if (barcode == 1) return;
+		}
+		insertprint();
+	}
+}
 void deletenode() {
 	int barcode;
 	scanf("%d", &barcode);
@@ -112,6 +109,7 @@ void deletenode() {
 	}
 }
 void main() {
+	reset();
 	while (1) {
 		system("cls");
 		int select;
