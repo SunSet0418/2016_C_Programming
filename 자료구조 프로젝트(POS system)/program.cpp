@@ -14,7 +14,7 @@ typedef struct LinkedList {
 struct product list[10] = {
 	{"Do it HTML,CSS",28000,9788997390250},
 	{"Do it 안드로이드",28000,9788997390847},
-	{"LG Gram",2000000,9788997390250},
+	{"LG Gram",2000000,9788997390251},
 	{"MSI GT73", 3500000,9788926113356},
 	{"Samsung Metal Series9", 2200000,9788931551167},
 	{"다이소 5핀 케이블", 1000,8808739000108},
@@ -139,11 +139,16 @@ void main() {
 		printf("1. 바코드 리딩\n");
 		printf("2. 물건 삭제\n");
 		printf("3. 정산\n");
+		printf("4. 계산 리스트\n:");
 		scanf("%d", &select);
 		switch (select) {
 		case 1:insertnode(); break;
 		case 2:deletenode(); break;
 		case 3:printLinkedList(); break;
+		case 4: {
+			insertprint();
+			system("pause");
+		}
 		}
 	}
 }
