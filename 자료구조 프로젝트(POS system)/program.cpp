@@ -30,6 +30,7 @@ void main();
 
 void insertprint() {
 	system("cls");
+	int sum=0;
 	node *p = head->newpro;
 	if (p == tail) {
 		printf("계산된 물건이 없습니다.\n");
@@ -37,12 +38,15 @@ void insertprint() {
 	}
 	while (p != tail) {
 		printf("%s\t  %d원\t  %d개\n", p->name, p->price, p->num);
+		sum += p->price*p->num;
 		p = p->newpro;
 	}
 	printf("\n");
+	printf("총 합계 : %d원\n", sum);
 }
 void printLinkedList() {
 	system("cls");
+	int sum=0;
 	node *p = head->newpro;
 	if (p == tail) {
 		printf("계산된 물건이 없습니다.\n");
@@ -51,9 +55,11 @@ void printLinkedList() {
 	}
 	while (p != tail) {
 		printf("%s\t  %d원\t  %d개\n", p->name, p->price, p->num);
+		sum += p->price*p->num;
 		p = p->newpro;
 	}
 	printf("\n");
+	printf("총 합계 : %d원\n", sum);
 	system("pause");
 }
 
@@ -100,10 +106,14 @@ void deletenode() {
 	while (p != tail) {
 		node *o = p;
 		p = p->newpro;
-		if (p->barcode == barcode) {
+		if (p->barcode == barcode && p->num == 1) {
 			node*s = p->newpro;
 			free(p);
 			o->newpro = s;
+			break;
+		}
+		else if (p->barcode == barcode && p->num > 1) {
+			p->num--;
 			break;
 		}
 	}
