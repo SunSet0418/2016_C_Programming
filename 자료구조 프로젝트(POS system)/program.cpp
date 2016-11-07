@@ -47,6 +47,7 @@ void insertprint() {
 void printLinkedList() {
 	system("cls");
 	int sum=0;
+	int input;
 	node *p = head->newpro;
 	if (p == tail) {
 		printf("계산된 물건이 없습니다.\n");
@@ -60,6 +61,15 @@ void printLinkedList() {
 	}
 	printf("\n");
 	printf("총 합계 : %d원\n", sum);
+	printf("받은 금액 : ");
+	scanf("%d", &input);
+	if (sum > input) {
+		printf("남은 금액 : %d\n", sum - input);
+	}
+	else if (sum < input) {
+		printf("거스름돈 : %d\n", input - sum);
+	}
+	reset();
 	system("pause");
 }
 
@@ -126,7 +136,7 @@ void main() {
 		printf("POS 시스템\n\n");
 		printf("1. 바코드 리딩\n");
 		printf("2. 물건 삭제\n");
-		printf("3. 계산목록\n");
+		printf("3. 정산\n");
 		scanf("%d", &select);
 		switch (select) {
 		case 1:insertnode(); break;
