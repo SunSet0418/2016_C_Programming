@@ -110,13 +110,13 @@ void insertnode() {
 		insertprint();
 	}
 }
+
 void deletenode() {
 	int barcode;
 	scanf("%d", &barcode);
 	node *p = head->newpro;
+	node *o = head;
 	while (p != tail) {
-		node *o = p;
-		p = p->newpro;
 		if (p->barcode == barcode && p->num == 1) {
 			node*s = p->newpro;
 			free(p);
@@ -129,6 +129,7 @@ void deletenode() {
 		}
 	}
 }
+
 void main() {
 	reset();
 	while (1) {
