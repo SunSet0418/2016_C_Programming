@@ -12,16 +12,16 @@ typedef struct LinkedList {
 }node;
 
 struct product list[10] = {
-	{"Do it HTML,CSS",28000,9788997390250},
-	{"Do it 안드로이드",28000,9788997390847},
-	{"LG Gram",2000000,9788997390251},
-	{"MSI GT73", 3500000,9788926113356},
-	{"Samsung Metal Series9", 2200000,9788931551167},
-	{"다이소 5핀 케이블", 1000,8808739000108},
-	{"맥북프로",1400000,8858741718423},
-	{"맥북프로 2016",2500000,6945795380026},
-	{"열혈강의 자료구조",32000,9788989345022},
-	{"초코파이",8000,8801117544614},
+	{ "Do it HTML,CSS",28000,9788997390250 },
+	{ "Do it 안드로이드",28000,9788997390847 },
+	{ "LG Gram",2000000,9788997390251 },
+	{ "MSI GT73", 3500000,9788926113356 },
+	{ "Samsung Metal Series9", 2200000,9788931551167 },
+	{ "다이소 5핀 케이블", 1000,8808739000108 },
+	{ "맥북프로",1400000,8858741718423 },
+	{ "맥북프로 2016",2500000,6945795380026 },
+	{ "열혈강의 자료구조",32000,9788989345022 },
+	{ "초코파이",8000,8801117544614 },
 };
 
 node*head, *tail;
@@ -37,7 +37,7 @@ void reset() {
 
 void insertprint() {
 	system("cls");
-	int sum=0;
+	int sum = 0;
 	node *p = head->newpro;
 	if (p == tail) {
 		printf("계산된 물건이 없습니다.\n");
@@ -53,7 +53,7 @@ void insertprint() {
 }
 void printLinkedList() {
 	system("cls");
-	int sum=0;
+	int sum = 0;
 	int input;
 	node *p = head->newpro;
 	if (p == tail) {
@@ -110,7 +110,6 @@ void insertnode() {
 		insertprint();
 	}
 }
-
 void deletenode() {
 	int barcode;
 	scanf("%d", &barcode);
@@ -127,9 +126,10 @@ void deletenode() {
 			p->num--;
 			break;
 		}
+		p = p->newpro;
+		o = o->newpro;
 	}
 }
-
 void main() {
 	reset();
 	while (1) {
